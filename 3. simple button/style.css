@@ -1,0 +1,151 @@
+body {
+    margin: 0px;
+}
+
+#header {
+    height: 200px;
+    /*background-image: url("img/blues.jpg");*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 600px;*/
+
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: space-evenly;
+    font-size: 3em;
+    color: midnightblue;
+}
+
+#menu {
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
+    height: 40px;
+    background-color: black;
+    top: auto;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 1.3em;
+    /*color: red ;*/
+}
+
+#container{
+    display: flex;
+}
+
+#cart {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 20%;
+    background-color: gray;
+    right: auto;
+}
+
+.box {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    height: 100%;
+    background-color: lightcyan;
+    flex-wrap: wrap;
+    flexbox: flex;
+
+    background-image: url("img/depositphotos_150954060-stock-photo-blues-guitar-background.jpg");
+}
+
+a {
+    color: lightgrey;
+    font-style: initial;
+}
+
+.item-box {
+    /*border-style: solid;*/
+    border-width: 2px;
+    border-color: black;
+    margin: 50px;
+    width: 250px;
+    height: 350px;
+    /*display: flex;*/
+    background-color: lightgrey;
+
+
+}
+
+.item-box img {
+    width: 230px;
+    height: 200px;
+    margin: 10px;
+    background-color: gray;
+    position: relative;
+    justify-content: center;
+    display: flex;
+}
+
+.item-box .item-name {
+    justify-content: center;
+    width: 230px;
+    height: 30px;
+    margin: 10px;
+    background-color: gray;
+    text-align: center;
+}
+
+.item-box .purchase {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.purchase p {
+    /*border-style: solid;*/
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    text-align: center;
+    background-color: gray;
+}
+
+.purchase #add-element-id-1, #add-element-id-2{
+    /*border-style: solid;*/
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    text-align: center;
+    background-color: gray;
+}
+
+.item-in-box {
+    height: 30px;
+    width: 200px;
+    background-color: lightskyblue;
+    margin: 10px;
+}
+
+.purchase span p {
+    width: 100px;
+    height: 30px;
+
+}
+
+.cartWithItems {
+    width: 200px;
+    height: 20px;
+    display: flex;
+    margin: 10px;
+}
+
+.priceInBasket .itemsInBasket{
+    width: 100px;
+    height: 20px;
+    margin: 10px;
+    justify-content: center;
+}
+
