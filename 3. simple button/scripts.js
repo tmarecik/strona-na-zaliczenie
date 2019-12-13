@@ -1,9 +1,13 @@
 window.onload = function f() {
 
     let mainFieldsElements = document.querySelector('#main-field');
+    // let addBUtton = document.getElementById('#main-field');
+    let cart = document.getElementById('cart');
 
+    /*todo dodawnie obiektu po kliknieciu w przycisk add*/
     mainFieldsElements.addEventListener("click", addItemsToCart, false, );
 
+    /*todo add only 8 elements*/
     function addItemsToCart(e) {
 
        let itemProperty = itemPropertyExtractor(e);
@@ -91,4 +95,34 @@ window.onload = function f() {
             totalPrice -= parseInt(itemPrice);
             document.getElementById('total-price').textContent = totalPrice.toString();
         }
+
+        let buyButtom = document.getElementById('buy');
+
+        buyButtom.addEventListener('click', function () {
+
+            let totalPrice = cart.children[0].textContent.split(" ")[2];
+            let numberOfItems = parseInt(cart.childElementCount - 3);
+
+            if (numberOfItems <= 0){
+                alert(' Your cart is empty ');
+            } else if (numberOfItems === 1) {
+                window.alert(`Bought 1 item for price ${totalPrice} PLN`);
+            } else {
+                window.alert(`Bought ${numberOfItems} item for ${totalPrice} PLN`);
+            }
+            removeItemsFromCart()
+        })
+
+        function removeItemsFromCart() {
+            let numberOfItems = cart.childElementCount;
+            for (let i = 3; i < numberOfItems; i ++){
+                cart.children[3].remove();
+            }
+        }
+
+        /*todo zerowanie ceny!!*/
+
+    let emptyCartButtom = document.getElementById('empty-cart');
+    emptyCartButtom.addEventListener('click', removeItemsFromCart, false);
+
 }
