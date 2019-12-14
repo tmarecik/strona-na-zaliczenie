@@ -1,12 +1,12 @@
 body {
-    margin: 0px;
+    margin: 0;
 }
 
 #header {
     height: 200px;
-    /*background-image: url("img/blues.jpg");*/
+    background-image: url("img/blues.jpg");
     /*background-repeat: no-repeat;*/
-    /*background-size: 600px;*/
+    background-size: 600px;
 
 }
 
@@ -14,7 +14,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;*/
     font-size: 3em;
     color: midnightblue;
 }
@@ -33,20 +33,10 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     font-size: 1.3em;
-    /*color: red ;*/
 }
 
 #container{
     display: flex;
-}
-
-#cart {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 20%;
-    background-color: gray;
-    right: auto;
 }
 
 .box {
@@ -56,7 +46,7 @@ body {
     height: 100%;
     background-color: lightcyan;
     flex-wrap: wrap;
-    flexbox: flex;
+    display: flex;
 
     background-image: url("img/depositphotos_150954060-stock-photo-blues-guitar-background.jpg");
 }
@@ -96,6 +86,7 @@ a {
     margin: 10px;
     background-color: gray;
     text-align: center;
+    vertical-align: center;
 }
 
 .item-box .purchase {
@@ -104,7 +95,21 @@ a {
     justify-content: space-evenly;
 }
 
-.purchase p {
+.purchase p{
+    /*border-style: solid;*/
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+    text-align: center;
+    background-color: gray;
+    align-content: center;
+
+    /*align-items: center;*/
+    /*justify-content: space-between;*/
+    /*justify-self: center;*/
+}
+
+.purchase button{
     /*border-style: solid;*/
     width: 100px;
     height: 30px;
@@ -113,39 +118,92 @@ a {
     background-color: gray;
 }
 
-.purchase #add-element-id-1, #add-element-id-2{
-    /*border-style: solid;*/
-    width: 100px;
-    height: 30px;
-    margin: 10px;
-    text-align: center;
-    background-color: gray;
-}
-
-.item-in-box {
-    height: 30px;
-    width: 200px;
-    background-color: lightskyblue;
-    margin: 10px;
-}
-
-.purchase span p {
-    width: 100px;
-    height: 30px;
-
-}
-
-.cartWithItems {
-    width: 200px;
-    height: 20px;
+#cart {
     display: flex;
-    margin: 10px;
+    flex-direction: column;
+    height: auto;
+    width: 20%;
+    background-color: gray;
+    right: auto;
 }
 
-.priceInBasket .itemsInBasket{
-    width: 100px;
-    height: 20px;
+.cart-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: auto;
+    height:60px;
     margin: 10px;
+    text-align: center;
+    background-color: lightskyblue;
+    /*border-style: solid;*/
+}
+
+#buy, #empty-cart {
+    display: flex;
+    width: 150px;
+    height: 40px;
+    margin: 10px;
+    /*display: flex;*/
+    justify-content: space-evenly;
+    vertical-align: center;
+    font-size: 1.25em;
+}
+
+.total-cart-price {
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height:60px;
+    margin: 10px;
+    text-align: center;
+    background-color: lightskyblue;
+    /*border-style: solid;*/
+    /*vertical-align: middle;*/
+    font-size: 1.8em;
+    font-variant-position: initial;
+
+}
+
+.itemsInBasket .divContainer {
+    width: auto;
+    height: 40px;
+    margin: 10px;
+    /*border-style: solid;*/
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 1.8em;
+    /*background-color: lightsteelblue;*/
+}
+.divContainer .item-name {
+    width: 70%;
+    height: 40px;
+    margin: 0;
+    /*border-style: solid;*/
+    background-color: lightsteelblue;
+    display: flex;
     justify-content: center;
 }
 
+.divContainer button {
+    width: 80px;
+    height: 40px;
+    margin: 0;
+    background-color: lightsteelblue;
+    font-size: 0.9em;
+    /*border-style: inherit;*/
+    /*justify-content: center;*/
+    /*border-style: solid;*/
+}
+
+.itemsInBasket .priceInBasket{
+    width: 345px;
+    height: 30px;
+    /*margin: 10px;*/
+    margin-left: 18px;
+    /*border-style: solid;*/
+    background-color: lightsteelblue;
+    display: flex;
+    justify-content: center;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}

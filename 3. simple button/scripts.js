@@ -1,10 +1,8 @@
 window.onload = function f() {
 
     let mainFieldsElements = document.querySelector('#main-field');
-    // let addBUtton = document.getElementById('#main-field');
     let cart = document.getElementById('cart');
 
-    /*todo dodawnie obiektu po kliknieciu w przycisk add*/
     mainFieldsElements.addEventListener("click", addItemsToCart, false, );
 
         function addItemsToCart(e) {
@@ -14,12 +12,8 @@ window.onload = function f() {
             let itemPrice = itemProperty[2];
             let itemIdNumber = itemProperty[0];
 
-            // console.log("itemName: " + itemName);
-            // console.log("itemPrice " + itemPrice);
-            // console.log("itemIdNumber: " + itemIdNumber);
-
              if (itemPrice != undefined) {
-                 if (cart.childElementCount <= 8 + 2) {
+                 if (cart.childElementCount <= 8 + 1) {
                      createItems(itemName, itemPrice, itemIdNumber);
                      addPrice(itemPrice);
                  } else {
@@ -43,26 +37,22 @@ window.onload = function f() {
             this.itemName = itemsClass;
             this.itemPrice = itemsValue;
 
-            let description = document.createTextNode(this.itemName);
             let nowyElement = document.createElement(this.tagName);
             nowyElement.id = itemIdNumber.toString() + '_cart';
-
-            nowyElement.appendChild(description);
             nowyElement.classList.add(itemIdNumber.toString());
 
-            let price = document.createTextNode(this.itemPrice);
-            let innerDiv = document.createElement(this.tagName);
 
-            innerDiv.appendChild(price);
-            innerDiv.classList.add('priceInBasket');
+            let divContainerForNameAndDeleteButton = document.createElement(this.tagName);
+            divContainerForNameAndDeleteButton.classList.add('divContainer');
 
-            nowyElement.appendChild(innerDiv);
-            nowyElement.classList.add('itemsInBasket');
+            let innerDivDescription = document.createElement(this.tagName);
+            innerDivDescription.classList.add('item-name');
+            let description = document.createTextNode(this.itemName);
+            innerDivDescription.appendChild(description);
 
+            // nowyElement.appendChild(innerDivDescription);
+            divContainerForNameAndDeleteButton.appendChild(innerDivDescription);
 
-            let cart = document.getElementById('cart');
-            innerDiv.classList.add('cartWithItems');
-            cart.appendChild(nowyElement);
 
             let buttonDelete = document.createElement('button');
             let buttonDeleteLabel = document.createTextNode('Usuń');
@@ -70,10 +60,30 @@ window.onload = function f() {
             buttonDelete.id = itemIdNumber.toString() + '_db';
             buttonDelete.value = this.itemPrice.toString();
 
-            nowyElement.appendChild(buttonDelete);
+            divContainerForNameAndDeleteButton.appendChild(buttonDelete);
+            nowyElement.appendChild(divContainerForNameAndDeleteButton);
+            // nowyElement.appendChild(buttonDelete);
+
+
+            let innerDiv = document.createElement(this.tagName);
+            innerDiv.classList.add('priceInBasket');
+
+            let price = document.createTextNode(this.itemPrice);
+            innerDiv.appendChild(price);
+
+
+            nowyElement.appendChild(innerDiv);
+            nowyElement.classList.add('itemsInBasket');
+
+
+            let cart = document.getElementById('cart');
+            innerDiv.classList.add('cartWithItems');
+
+            cart.appendChild(nowyElement);
+
 
             buttonDelete.addEventListener("click", deletItemFromCart, false,);
-            // itemIdNumber ++;
+
         }
 
         let totalPrice = 0;
@@ -108,8 +118,9 @@ window.onload = function f() {
 
     buyButtom.addEventListener('click', function () {
 
-            let totalPrice = cart.children[0].textContent.split(" ")[2];
-            let numberOfItems = parseInt(cart.childElementCount - 3);
+            let totalPrice = cart.children[1].textContent.split(" ")[2];
+            console.log("total price: " + totalPrice);
+            let numberOfItems = parseInt(cart.childElementCount - 2);
 
             if (numberOfItems <= 0){
                 alert(' Your cart is empty ');
@@ -126,8 +137,8 @@ window.onload = function f() {
 
         function removeItemsFromCart() {
             let numberOfItems = cart.childElementCount;
-            for (let i = 3; i < numberOfItems; i ++){
-                cart.children[3].remove();
+            for (let i = 2; i < numberOfItems; i ++){
+                cart.children[2].remove();
             }
             setTotalPriceEqualZero()
         }
