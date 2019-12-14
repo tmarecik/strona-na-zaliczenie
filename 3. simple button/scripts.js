@@ -7,17 +7,25 @@ window.onload = function f() {
     /*todo dodawnie obiektu po kliknieciu w przycisk add*/
     mainFieldsElements.addEventListener("click", addItemsToCart, false, );
 
-    /*todo add only 8 elements*/
-    function addItemsToCart(e) {
+        function addItemsToCart(e) {
 
-       let itemProperty = itemPropertyExtractor(e);
-       let itemName = itemProperty[1];
-       let itemPrice = itemProperty[2];
-       let itemIdNumber = itemProperty[0];
+            let itemProperty = itemPropertyExtractor(e);
+            let itemName = itemProperty[1];
+            let itemPrice = itemProperty[2];
+            let itemIdNumber = itemProperty[0];
 
-        createItems(itemName, itemPrice, itemIdNumber);
-        addPrice(itemPrice);
+            // console.log("itemName: " + itemName);
+            // console.log("itemPrice " + itemPrice);
+            // console.log("itemIdNumber: " + itemIdNumber);
 
+             if (itemPrice != undefined) {
+                 if (cart.childElementCount <= 8 + 2) {
+                     createItems(itemName, itemPrice, itemIdNumber);
+                     addPrice(itemPrice);
+                 } else {
+                     window.alert("there is no room in your basket \n please press buy or modify\n your items collection")
+                 }
+             }
     }
 
         function itemPropertyExtractor(e) {
@@ -64,15 +72,15 @@ window.onload = function f() {
 
             nowyElement.appendChild(buttonDelete);
 
-            buttonDelete.addEventListener("click", deletItemFromCart, false,)
-            itemIdNumber ++;
+            buttonDelete.addEventListener("click", deletItemFromCart, false,);
+            // itemIdNumber ++;
         }
 
         let totalPrice = 0;
         function addPrice(itemPrice) {
             totalPrice += parseInt(itemPrice);
             document.getElementById('total-price').textContent = totalPrice.toString();
-            console.log(totalPrice);
+            // console.log(totalPrice);
         }
 
         function deletItemFromCart(e) {
@@ -96,9 +104,9 @@ window.onload = function f() {
             document.getElementById('total-price').textContent = totalPrice.toString();
         }
 
-        let buyButtom = document.getElementById('buy');
+    let buyButtom = document.getElementById('buy');
 
-        buyButtom.addEventListener('click', function () {
+    buyButtom.addEventListener('click', function () {
 
             let totalPrice = cart.children[0].textContent.split(" ")[2];
             let numberOfItems = parseInt(cart.childElementCount - 3);
@@ -111,18 +119,22 @@ window.onload = function f() {
                 window.alert(`Bought ${numberOfItems} item for ${totalPrice} PLN`);
             }
             removeItemsFromCart()
-        })
+        });
+
+    let emptyCartButtom = document.getElementById('empty-cart');
+    emptyCartButtom.addEventListener('click', removeItemsFromCart, false);
 
         function removeItemsFromCart() {
             let numberOfItems = cart.childElementCount;
             for (let i = 3; i < numberOfItems; i ++){
                 cart.children[3].remove();
             }
+            setTotalPriceEqualZero()
         }
 
-        /*todo zerowanie ceny!!*/
+        function setTotalPriceEqualZero(){
+            totalPrice = 0;
+            document.getElementById('total-price').textContent = totalPrice.toString();
+        }
 
-    let emptyCartButtom = document.getElementById('empty-cart');
-    emptyCartButtom.addEventListener('click', removeItemsFromCart, false);
-
-}
+};
