@@ -62,7 +62,6 @@ window.onload = function f() {
 
             divContainerForNameAndDeleteButton.appendChild(buttonDelete);
             nowyElement.appendChild(divContainerForNameAndDeleteButton);
-            // nowyElement.appendChild(buttonDelete);
 
 
             let innerDiv = document.createElement(this.tagName);
